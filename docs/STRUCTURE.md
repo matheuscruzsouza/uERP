@@ -4,7 +4,7 @@
 
 ## Core
 
-### Autenticação
+### Autenticação/Autorização
 
 ### Configuração
 
@@ -24,4 +24,12 @@
 
 ### Controle de vendas
 
-## Relatorios
+## Financeiro
+
+### Custos
+
+### Lucros
+
+### Relatorios
+
+### Analytics
