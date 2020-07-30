@@ -14,6 +14,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.*;
+
 @Entity
 @Setter
 @Getter
@@ -29,6 +32,7 @@ public class Telefone {
     private String ddd;
     private boolean whatsapp;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oidpessoa")
     private Pessoa pessoa;

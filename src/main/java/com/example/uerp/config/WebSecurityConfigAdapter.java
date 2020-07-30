@@ -36,6 +36,6 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
             usuarioRepository.save(usuario);
         }
 
-        builder.userDetailsService(login -> new UsuarioCustomDTO(usuarioRepository.findByLogin(login)));
+        builder.userDetailsService(login -> new UsuarioCustomDTO(usuarioRepository.findByLogin(login))).passwordEncoder(passwordEncoder());
     }
 }

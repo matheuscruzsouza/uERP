@@ -17,6 +17,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.*;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -39,6 +42,7 @@ public class Pessoa {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
     private List<Endereco> endereco;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "pessoa")
     private Usuario usuario;
 

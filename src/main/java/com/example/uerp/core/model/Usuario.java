@@ -14,6 +14,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.*;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -26,8 +29,11 @@ public class Usuario {
     private String oid;
     
     private String login;
+
+    @JsonIgnore
     private String senha;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oidpessoa")
     private Pessoa pessoa;
