@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.*;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario", schema = "uerp")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario {
 
     @Id @GeneratedValue(generator="system-uuid")
@@ -33,7 +33,6 @@ public class Usuario {
     @JsonIgnore
     private String senha;
 
-    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oidpessoa")
     private Pessoa pessoa;

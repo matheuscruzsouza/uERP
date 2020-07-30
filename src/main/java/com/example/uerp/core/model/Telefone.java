@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.*;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @Table(name = "telefone", schema = "uerp")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Telefone {
 
     @Id @GeneratedValue(generator="system-uuid")
