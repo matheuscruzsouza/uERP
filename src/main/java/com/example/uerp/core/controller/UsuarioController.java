@@ -1,7 +1,9 @@
 package com.example.uerp.core.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import com.example.uerp.config.SocketTextHandler;
 import com.example.uerp.core.model.Usuario;
 import com.example.uerp.core.repository.UsuarioRepository;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.TextMessage;
 
 @RestController
 @RequestMapping("usuario")
@@ -24,6 +27,13 @@ public class UsuarioController {
 
     @GetMapping
     public List<Usuario> listar() {
+
+        try {
+			SocketTextHandler.getInstance().broadcast(new TextMessage("Um cliente foi acessado"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
         return usuarioRepository.findAll();
     }
 

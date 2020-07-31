@@ -11,9 +11,15 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Component
-public class SocketTextHandler extends TextWebSocketHandler {
+public final class SocketTextHandler extends TextWebSocketHandler {
+
+	private static final SocketTextHandler INSTANCE = new SocketTextHandler();
 
 	private List<WebSocketSession> sessions = new ArrayList<>();
+
+	public static SocketTextHandler getInstance() {
+		return INSTANCE;
+	}
 
 	synchronized void addSession(WebSocketSession sess) {
 		this.sessions.add(sess);
@@ -38,8 +44,17 @@ public class SocketTextHandler extends TextWebSocketHandler {
 				sess.sendMessage(new TextMessage("Hi " + payload + " how may we help you?"));
 			}
 		}
-	
 
+	}
+
+	public void broadcast(TextMessage message) throws IOException {
+		String payload = message.getPayload();
+
+		System.out.println("Session: " + payload);
+		
+		for (WebSocketSession sess : sessions) {
+			sess.sendMessage(new TextMessage("Hi " + payload + " how may we help you?"));
+		}
 	}
 
 }
