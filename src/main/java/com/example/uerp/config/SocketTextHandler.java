@@ -41,7 +41,7 @@ public final class SocketTextHandler extends TextWebSocketHandler {
 		
 		for (WebSocketSession sess : sessions) {
 			if (sess.getUri() != session.getUri()) {
-				sess.sendMessage(new TextMessage("Hi " + payload + " how may we help you?"));
+				sess.sendMessage(new TextMessage(payload));
 			}
 		}
 
@@ -50,10 +50,8 @@ public final class SocketTextHandler extends TextWebSocketHandler {
 	public void broadcast(TextMessage message) throws IOException {
 		String payload = message.getPayload();
 
-		System.out.println("Session: " + payload);
-		
 		for (WebSocketSession sess : sessions) {
-			sess.sendMessage(new TextMessage("Hi " + payload + " how may we help you?"));
+			sess.sendMessage(new TextMessage(payload));
 		}
 	}
 
