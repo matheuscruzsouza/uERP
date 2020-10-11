@@ -23,6 +23,8 @@ services:
       - "16543:80"
     depends_on:
       - teste-postgres-compose
+    volumes:
+      - ./database/scripts:/var/lib/pgadmin/storage/admin_example.com/backups
     networks:
       - postgres-compose-network
 
