@@ -4,32 +4,38 @@
 
 ## Core
 
-### Autenticação/Autorização
+- Autenticação/Autorização
 
-### Configuração
+- Configuração
 
-### Pessoa
+- Pessoa
+
+- Usuario
+
+## Cadastro
+
+- Cliente
+
+- Produto
+
+- Serviço
 
 ## RH
 
-### Funcionario
+- Funcionario
 
 ## Venda
 
-### Cliente
+- Produto/Serviço
 
-### Produto/Serviço
+## Relatorios
 
-### Estoque
+- Custos (contas a pagar)
 
-### Controle de vendas
+- Lucros (contas a receber)
 
-## Financeiro
+- Analytics
 
-### Custos
+- Estoque
 
-### Lucros
-
-### Relatorios
-
-### Analytics
+- Controle de vendas

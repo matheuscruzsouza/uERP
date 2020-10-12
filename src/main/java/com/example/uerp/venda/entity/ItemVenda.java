@@ -1,12 +1,15 @@
-package com.example.uerp.core.model;
+package com.example.uerp.venda.entity;
+
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.example.uerp.registro.entity.Produto;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,28 +17,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation.*;
-
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "telefone", schema = "uerp")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class Telefone {
+@Table(name = "item_venda", schema = "venda")
+public class ItemVenda {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    protected String oid;
+    private String oid;
 
-    protected String numero;
-    protected String ddd;
-    protected boolean whatsapp;
-
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "oidpessoa")
-    protected Pessoa pessoa;
+    private Produto produto;
 
+    private BigDecimal quantidade;
+
+    private BigDecimal valorParcial;
 }

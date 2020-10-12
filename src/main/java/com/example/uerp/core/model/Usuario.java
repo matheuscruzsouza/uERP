@@ -21,20 +21,21 @@ import com.fasterxml.jackson.annotation.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario", schema = "uerp")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Usuario {
 
-    @Id @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String oid;
-    
-    private String login;
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    protected String oid;
+
+    protected String login;
 
     @JsonIgnore
-    private String senha;
+    protected String senha;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oidpessoa")
-    private Pessoa pessoa;
+    protected Pessoa pessoa;
 
 }
