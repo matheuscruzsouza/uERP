@@ -24,26 +24,27 @@ import com.fasterxml.jackson.annotation.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "pessoa", schema = "uerp")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Pessoa {
 
-    @Id @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String oid;
-    
-    private String nome;
-    private String cpf;
-    private LocalDate datanascimento;
-    private String email;
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    protected String oid;
+
+    protected String nome;
+    protected String cpf;
+    protected LocalDate datanascimento;
+    protected String email;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
-    private List<Telefone> telefone;
+    protected List<Telefone> telefone;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
-    private List<Endereco> endereco;
+    protected List<Endereco> endereco;
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "pessoa")
-    private Usuario usuario;
+    protected Usuario usuario;
 
 }

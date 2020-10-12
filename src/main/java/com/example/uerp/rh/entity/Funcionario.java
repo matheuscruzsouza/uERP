@@ -1,4 +1,7 @@
-package com.example.uerp.core.model;
+package com.example.uerp.rh.entity;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,34 +11,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.example.uerp.core.model.Usuario;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation.*;
-
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "telefone", schema = "uerp")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class Telefone {
+@Table(name = "funcionario", schema = "rh")
+public class Funcionario extends Usuario {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    protected String oid;
+    private String oid;
 
-    protected String numero;
-    protected String ddd;
-    protected boolean whatsapp;
-
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "oidpessoa")
-    protected Pessoa pessoa;
+    @JoinColumn(name = "oidcargo")
+    private Cargo cargo;
 
+    private BigDecimal salario;
+
+    private LocalDate admissao;
+
+    private LocalDate desligamento;
 }
