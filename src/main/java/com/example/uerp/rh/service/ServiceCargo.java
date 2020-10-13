@@ -15,4 +15,8 @@ public class ServiceCargo {
     public Iterable<Cargo> getAll() {
         return this.repository.findAll();
     }
+
+    public Cargo novo(Cargo cargo) {
+        return this.repository.save(cargo);
+    }
 }

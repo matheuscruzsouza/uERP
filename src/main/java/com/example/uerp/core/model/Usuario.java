@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Setter
 @Getter
@@ -31,7 +32,7 @@ public class Usuario {
 
     protected String login;
 
-    @JsonIgnore
+    @JsonProperty(access = Access.WRITE_ONLY)
     protected String senha;
 
     @OneToOne(fetch = FetchType.LAZY)

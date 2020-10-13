@@ -5,6 +5,8 @@ import com.example.uerp.registro.service.ServiceCliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +26,11 @@ public class ControllerCliente {
     @Operation(summary = "Lista clientes", security = @SecurityRequirement(name = "bearerAuth"))
     public Iterable<Cliente> getAll() {
         return this.service.getAll();
+    }
+
+    @PostMapping()
+    @Operation(summary = "Cria um novo cliente", security = @SecurityRequirement(name = "bearerAuth"))
+    public Cliente novo(@RequestBody Cliente cliente) {
+        return this.service.novo(cliente);
     }
 }

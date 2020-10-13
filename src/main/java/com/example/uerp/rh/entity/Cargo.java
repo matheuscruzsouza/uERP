@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Getter;
@@ -29,6 +31,7 @@ public class Cargo {
 
     private String nome;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cargo")
     private List<Funcionario> funcionarios;
 
