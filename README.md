@@ -1,4 +1,6 @@
-<img align="center" width="200" height="200" src="docs/images/logo/logo_200x200.png">
+<p align="center" width="100%">
+<img width="200" height="200" src="docs/images/logo/logo_200x200.png">
+ </p>
 
 ## uERP
 
